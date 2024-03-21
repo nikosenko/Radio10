@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    //4 текущая радиостанция(прямое указание номера)
+    // текущая радиостанция(прямое указание номера)
     @Test
     public void shouldCurrentStation() {
         Radio radio = new Radio();
@@ -44,6 +44,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
     //переключение при значении меньше 0
     @Test
     public void shouldSwitchingStationAvailableMinRange() {
@@ -57,33 +58,36 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
-//next внутри диапазона
-@Test
-public void shouldNext() {
-    Radio radio = new Radio();
-    radio.setCurrentStation(3);
 
-    radio.next();
+    //next внутри диапазона
+    @Test
+    public void shouldNext() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(3);
 
-    int expected = 4;
-    int actual = radio.getCurrentStation();
-    Assertions.assertEquals(expected, actual);
+        radio.next();
 
-}
-// next при макс значении
-@Test
-public void shouldNextAboveMax() {
-    Radio radio = new Radio();
-    radio.setCurrentStation(9);
+        int expected = 4;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
 
-    radio.next();
+    }
 
-    int expected = 0;
-    int actual = radio.getCurrentStation();
-    Assertions.assertEquals(expected, actual);
+    // next при макс значении
+    @Test
+    public void shouldNextAboveMax() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(9);
 
-}
-//переключение на предидущую внитри диапазона
+        radio.next();
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    //переключение на предидущую внитри диапазона
     @Test
     public void shouldPrev() {
         Radio radio = new Radio();
@@ -96,6 +100,7 @@ public void shouldNextAboveMax() {
         Assertions.assertEquals(expected, actual);
 
     }
+
     // переключение на предидущую меньше мин
     @Test
     public void shouldPrevAboveMin() {
@@ -124,7 +129,7 @@ public void shouldNextAboveMax() {
 
     // переключение громкости  в допустимом диапазоне
     @Test
-    public void shouldSwitchingAvailableRangeVolume() {
+    public void shouldSwitchingAcceptableRangeVolume() {
         Radio radio = new Radio();
         radio.setCurrentVolume(4);
 
@@ -138,7 +143,7 @@ public void shouldNextAboveMax() {
 // переключение при значениях больше 100
 
     @Test
-    public void shouldSwitchingAvailableMaxRangeVolume() {
+    public void shouldAbovMaxRangeVolume() {
         Radio radio = new Radio();
         radio.setCurrentVolume(101);
 
@@ -152,7 +157,7 @@ public void shouldNextAboveMax() {
 // переключение при значениях меньше 0
 
     @Test
-    public void shouldSwitchingAvailablMinRangeVolume() {
+    public void shouldBelowMinimumRangeVolume() {
         Radio radio = new Radio();
         radio.setCurrentVolume(-1);
 
