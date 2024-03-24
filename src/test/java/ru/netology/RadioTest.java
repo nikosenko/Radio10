@@ -4,6 +4,24 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    @Test
+    public void testParametrizedConstructor() { //тестирует параметризованный конструктор
+        Radio radio = new Radio(20);
+
+        Assertions.assertEquals(0, radio.getMinStation());
+        Assertions.assertEquals(19, radio.getMaxStation());
+        Assertions.assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void testUnparametrizedConstructor() { //тестирует непараметризованный конструктор
+        Radio radio = new Radio();
+
+        Assertions.assertEquals(0, radio.getMinStation());
+        Assertions.assertEquals(9, radio.getMaxStation());
+        Assertions.assertEquals(0, radio.getCurrentVolume());
+    }
+
     // текущая радиостанция(прямое указание номера)
     @Test
     public void shouldCurrentStation() {
